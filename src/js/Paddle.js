@@ -1,4 +1,4 @@
-import { reset } from "./utils/helpers";
+import { reset } from "./utils";
 
 class Paddle {
   constructor({ gameWidth, gameHeight }) {

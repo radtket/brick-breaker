@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-	<title>Brick Breaker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Brick Breaker</title>
+
+    <style>
+      #gameScreen {
+        border: 1px solid black;
+      }
+
+      img {
+        display: none;
+      }
+    </style>
 </head>
 <body>
+
   <img id="img_ball" src="./images/ball.png" />
   <img id="img_brick1" src="./images/brick.png" />
   <img id="img_brick2" src="./images/brick2.png" />
@@ -16,8 +27,9 @@
   <img id="img_gameover" src="./images/gameover.png" />
   <img id="img_lives" src="./images/lives.png" />
   <img id="img_youwin" src="./images/youwin.png" />
-	<canvas height="600" id="gameScreen" width="800"></canvas>
-	<script src="app.js">
-	</script>
+  <canvas id="gameScreen" width="800" height="600"></canvas>
+
+
+<script src="app.js"></script>
 </body>
 </html>

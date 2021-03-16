@@ -1,8 +1,18 @@
 import Paddle from "./Paddle";
 import Ball from "./Ball";
-import buildLevel from "./utils/buildLevel";
 
-const { PAUSED, RUNNING, MENU, GAMEOVER, NEWLEVEL, YOUWIN } = "./utils";
+import { buildLevel } from "./buildLevel";
+
+const GAMESTATE = {
+  PAUSED: 0,
+  RUNNING: 1,
+  MENU: 2,
+  GAMEOVER: 3,
+  NEWLEVEL: 4,
+  YOUWIN: 5,
+};
+
+const { PAUSED, RUNNING, MENU, GAMEOVER, NEWLEVEL, YOUWIN } = GAMESTATE;
 
 class Game {
   constructor(gameWidth, gameHeight) {

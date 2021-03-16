@@ -1,11 +1,6 @@
-export const PAUSED = 0;
-export const RUNNING = 1;
-export const MENU = 2;
-export const GAMEOVER = 3;
-export const NEWLEVEL = 4;
-export const YOUWIN = 5;
+import Brick from "./Brick";
 
-export const LEVELS_ARRAY = [
+const LEVELS_ARRAY = [
   [
     [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
     [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
@@ -27,5 +22,22 @@ export const LEVELS_ARRAY = [
   ],
 ];
 
-export const GAME_WIDTH = 800;
-export const GAME_HEIGHT = 600;
+export const buildLevel = (game, currentLevelNumber) =>
+  LEVELS_ARRAY[currentLevelNumber].reduce(
+    (bricks, row, rowIndex) =>
+      row.reduce(
+        (all, brick, brickIndex) => [
+          ...all,
+          new Brick(
+            game,
+            {
+              x: 80 * brickIndex,
+              y: 75 + 24 * rowIndex,
+            },
+            brick
+          ),
+        ],
+        bricks
+      ),
+    []
+  );

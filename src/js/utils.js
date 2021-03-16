@@ -57,6 +57,7 @@ export const detectCollision = (ball, gameObject) => {
         ballSpeedY > 0 &&
         bottomOfBall - topOfObject < rightSideOfObject - leftSideOfBall)
     ) {
+      console.log("caso Y");
       return 1;
     }
     if (
@@ -73,6 +74,7 @@ export const detectCollision = (ball, gameObject) => {
         ballSpeedY >= 0 &&
         bottomOfBall - topOfObject > rightSideOfObject - leftSideOfBall)
     ) {
+      console.log("caso X");
       return 2;
     }
   }

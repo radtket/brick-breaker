@@ -173,12 +173,12 @@ var detectCollision = function detectCollision(ball, gameObject) {
 
   if (bottomOfBall >= topOfObject && topOfBall <= bottomOfObject && rightSideOfBall >= leftSideOfObject && leftSideOfBall <= rightSideOfObject) {
     if (ballSpeedX >= 0 && ballSpeedY < 0 && bottomOfObject - topOfBall < rightSideOfBall - leftSideOfObject || ballSpeedX <= 0 && ballSpeedY < 0 && bottomOfObject - topOfBall < rightSideOfObject - leftSideOfBall || ballSpeedX >= 0 && ballSpeedY > 0 && bottomOfBall - topOfObject < rightSideOfBall - leftSideOfObject || ballSpeedX <= 0 && ballSpeedY > 0 && bottomOfBall - topOfObject < rightSideOfObject - leftSideOfBall) {
-      console.log('caso Y');
+      console.log("caso Y");
       return 1;
     }
 
     if (ballSpeedX > 0 && ballSpeedY <= 0 && bottomOfObject - topOfBall > rightSideOfBall - leftSideOfObject || ballSpeedX < 0 && ballSpeedY <= 0 && bottomOfObject - topOfBall > rightSideOfObject - leftSideOfBall || ballSpeedX > 0 && ballSpeedY >= 0 && bottomOfBall - topOfObject > rightSideOfBall - leftSideOfObject || ballSpeedX < 0 && ballSpeedY >= 0 && bottomOfBall - topOfObject > rightSideOfObject - leftSideOfBall) {
-      console.log('caso X');
+      console.log("caso X");
       return 2;
     }
   }
@@ -318,7 +318,7 @@ var Paddle = /*#__PURE__*/function () {
   }, {
     key: "draw",
     value: function draw(ctx) {
-      ctx.drawImage(document.getElementById('img_paddle'), this.position.x, this.position.y, this.width, this.height);
+      ctx.drawImage(document.getElementById("img_paddle"), this.position.x, this.position.y, this.width, this.height);
     }
   }, {
     key: "update",
@@ -399,7 +399,7 @@ var Ball = /*#__PURE__*/function () {
   }, {
     key: "draw",
     value: function draw(ctx) {
-      ctx.drawImage(document.getElementById('img_ball'), this.position.x, this.position.y, this.size, this.size);
+      ctx.drawImage(document.getElementById("img_ball"), this.position.x, this.position.y, this.size, this.size);
     }
   }, {
     key: "update",
@@ -529,11 +529,11 @@ var Brick = /*#__PURE__*/function () {
 
       switch ((0, _utils.detectCollision)(this.game.ball, this)) {
         case 1:
-          initUpdate('y');
+          initUpdate("y");
           break;
 
         case 2:
-          initUpdate('x');
+          initUpdate("x");
           break;
 
         default:
@@ -551,28 +551,7 @@ var Brick = /*#__PURE__*/function () {
 
 var _default = Brick;
 exports.default = _default;
-},{"./utils":"js/utils.js"}],"js/constants.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.LEVELS_ARRAY = exports.YOUWIN = exports.NEWLEVEL = exports.GAMEOVER = exports.MENU = exports.RUNNING = exports.PAUSED = void 0;
-var PAUSED = 0;
-exports.PAUSED = PAUSED;
-var RUNNING = 1;
-exports.RUNNING = RUNNING;
-var MENU = 2;
-exports.MENU = MENU;
-var GAMEOVER = 3;
-exports.GAMEOVER = GAMEOVER;
-var NEWLEVEL = 4;
-exports.NEWLEVEL = NEWLEVEL;
-var YOUWIN = 5;
-exports.YOUWIN = YOUWIN;
-var LEVELS_ARRAY = [[[3, 3, 3, 3, 3, 3, 3, 3, 3, 3], [3, 3, 3, 3, 3, 3, 3, 3, 3, 3], [2, 2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2, 2], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]], [[3, 0, 0, 2, 2, 2, 2, 0, 0, 3], [1, 3, 0, 0, 2, 2, 0, 0, 3, 1], [1, 1, 3, 0, 0, 0, 0, 3, 1, 1], [1, 1, 1, 3, 0, 0, 3, 1, 1, 1], [1, 1, 1, 3, 0, 0, 3, 1, 1, 1], [1, 1, 1, 3, 0, 0, 3, 1, 1, 1], [1, 1, 3, 0, 0, 0, 0, 3, 1, 1], [1, 3, 0, 0, 2, 2, 0, 0, 3, 1], [3, 0, 0, 2, 2, 2, 2, 0, 0, 3]]];
-exports.LEVELS_ARRAY = LEVELS_ARRAY;
-},{}],"js/buildLevel.js":[function(require,module,exports) {
+},{"./utils":"js/utils.js"}],"js/buildLevel.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -581,8 +560,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.buildLevel = void 0;
 
 var _Brick = _interopRequireDefault(require("./Brick"));
-
-var _constants = require("./constants");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -598,8 +575,10 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+var LEVELS_ARRAY = [[[3, 3, 3, 3, 3, 3, 3, 3, 3, 3], [3, 3, 3, 3, 3, 3, 3, 3, 3, 3], [2, 2, 2, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2, 2], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]], [[3, 0, 0, 2, 2, 2, 2, 0, 0, 3], [1, 3, 0, 0, 2, 2, 0, 0, 3, 1], [1, 1, 3, 0, 0, 0, 0, 3, 1, 1], [1, 1, 1, 3, 0, 0, 3, 1, 1, 1], [1, 1, 1, 3, 0, 0, 3, 1, 1, 1], [1, 1, 1, 3, 0, 0, 3, 1, 1, 1], [1, 1, 3, 0, 0, 0, 0, 3, 1, 1], [1, 3, 0, 0, 2, 2, 0, 0, 3, 1], [3, 0, 0, 2, 2, 2, 2, 0, 0, 3]]];
+
 var buildLevel = function buildLevel(game, currentLevelNumber) {
-  return _constants.LEVELS_ARRAY[currentLevelNumber].reduce(function (bricks, row, rowIndex) {
+  return LEVELS_ARRAY[currentLevelNumber].reduce(function (bricks, row, rowIndex) {
     return row.reduce(function (all, brick, brickIndex) {
       return [].concat(_toConsumableArray(all), [new _Brick.default(game, {
         x: 80 * brickIndex,
@@ -610,7 +589,7 @@ var buildLevel = function buildLevel(game, currentLevelNumber) {
 };
 
 exports.buildLevel = buildLevel;
-},{"./Brick":"js/Brick.js","./constants":"js/constants.js"}],"js/Game.js":[function(require,module,exports) {
+},{"./Brick":"js/Brick.js"}],"js/Game.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -644,13 +623,20 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var _utils = './utils',
-    PAUSED = _utils.PAUSED,
-    RUNNING = _utils.RUNNING,
-    MENU = _utils.MENU,
-    GAMEOVER = _utils.GAMEOVER,
-    NEWLEVEL = _utils.NEWLEVEL,
-    YOUWIN = _utils.YOUWIN;
+var GAMESTATE = {
+  PAUSED: 0,
+  RUNNING: 1,
+  MENU: 2,
+  GAMEOVER: 3,
+  NEWLEVEL: 4,
+  YOUWIN: 5
+};
+var PAUSED = GAMESTATE.PAUSED,
+    RUNNING = GAMESTATE.RUNNING,
+    MENU = GAMESTATE.MENU,
+    GAMEOVER = GAMESTATE.GAMEOVER,
+    NEWLEVEL = GAMESTATE.NEWLEVEL,
+    YOUWIN = GAMESTATE.YOUWIN;
 
 var Game = /*#__PURE__*/function () {
   function Game(gameWidth, gameHeight) {
@@ -667,7 +653,7 @@ var Game = /*#__PURE__*/function () {
     this.bricks = [];
     this.lives = 4;
     this.currentLevelNumber = 0;
-    document.addEventListener('keydown', function (_ref) {
+    document.addEventListener("keydown", function (_ref) {
       var keyCode = _ref.keyCode;
 
       switch (keyCode) {
@@ -696,7 +682,7 @@ var Game = /*#__PURE__*/function () {
         default:
       }
     });
-    document.addEventListener('keyup', function (_ref2) {
+    document.addEventListener("keyup", function (_ref2) {
       var keyCode = _ref2.keyCode;
 
       switch (keyCode) {
@@ -767,11 +753,11 @@ var Game = /*#__PURE__*/function () {
         ctx.drawImage(document.getElementById(id), 0, 0, _this2.gameWidth, _this2.gameHeight);
       };
 
-      drawIt('img_bg');
-      ctx.drawImage(document.getElementById('img_lives'), 0, 0, 100, 50);
+      drawIt("img_bg");
+      ctx.drawImage(document.getElementById("img_lives"), 0, 0, 100, 50);
 
       for (var i = 2; i <= this.lives; i += 1) {
-        ctx.drawImage(document.getElementById('img_ball'), i * 20 + 60, 17, 16, 16);
+        ctx.drawImage(document.getElementById("img_ball"), i * 20 + 60, 17, 16, 16);
       }
 
       [].concat(_toConsumableArray(this.gameObjects), _toConsumableArray(this.bricks)).forEach(function (brick) {
@@ -780,24 +766,24 @@ var Game = /*#__PURE__*/function () {
 
       if (this.gamestate === PAUSED) {
         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillStyle = "rgba(0,0,0,0.5)";
         ctx.fill();
-        ctx.font = '30px Arial';
-        ctx.fillStyle = 'white';
-        ctx.textAlign = 'center';
-        ctx.fillText('Paused', this.gameWidth / 2, this.gameHeight / 2);
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText("Paused", this.gameWidth / 2, this.gameHeight / 2);
       }
 
       if (this.gamestate === MENU) {
-        drawIt('img_bgmenu');
+        drawIt("img_bgmenu");
       }
 
       if (this.gamestate === GAMEOVER) {
-        drawIt('img_gameover');
+        drawIt("img_gameover");
       }
 
       if (this.gamestate === YOUWIN) {
-        drawIt('img_youwin');
+        drawIt("img_youwin");
       }
     }
   }, {
@@ -816,89 +802,15 @@ var Game = /*#__PURE__*/function () {
 
 var _default = Game;
 exports.default = _default;
-},{"./Paddle":"js/Paddle.js","./Ball":"js/Ball.js","./buildLevel":"js/buildLevel.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"scss/main.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app.js":[function(require,module,exports) {
+},{"./Paddle":"js/Paddle.js","./Ball":"js/Ball.js","./buildLevel":"js/buildLevel.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _Game = _interopRequireDefault(require("./js/Game"));
 
-require("./scss/main.scss");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var canvas = document.getElementById('gameScreen');
-var ctx = canvas.getContext('2d');
+var canvas = document.getElementById("gameScreen");
+var ctx = canvas.getContext("2d");
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
 var game = new _Game.default(GAME_WIDTH, GAME_HEIGHT);
@@ -914,7 +826,7 @@ function gameLoop(timestamp) {
 }
 
 requestAnimationFrame(gameLoop);
-},{"./js/Game":"js/Game.js","./scss/main.scss":"scss/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./js/Game":"js/Game.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -942,7 +854,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54084" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51054" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

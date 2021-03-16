@@ -1,1 +1,0 @@
-{"version":3,"sources":["scss/main.scss"],"names":[],"mappings":"AAAA,WAAW,CAAC;EACX,MAAM,EAAE,eAAe,GACvB;;AAED,GAAG,CAAC;EACH,OAAO,EAAE,IAAI,GACb","file":"app.c328ef1a.css","sourceRoot":"../src","sourcesContent":["#gameScreen {\n\tborder: 1px solid black;\n}\n\nimg {\n\tdisplay: none;\n}\n"]}

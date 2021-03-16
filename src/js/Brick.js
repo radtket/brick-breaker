@@ -1,4 +1,4 @@
-import { detectCollision } from "./utils/helpers";
+import { detectCollision } from "./utils";
 
 class Brick {
   constructor(game, position, str) {

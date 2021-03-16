@@ -1,4 +1,4 @@
-import { detectCollisionPaddle, reset } from "./utils/helpers";
+import { detectCollisionPaddle, reset } from "./utils";
 
 class Ball {
   constructor(game) {
