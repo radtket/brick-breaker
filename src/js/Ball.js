@@ -1,11 +1,7 @@
-import detectCollisionPaddle from "./collisionDetectionPaddle";
+import { detectCollisionPaddle, reset } from "./utils/helpers";
 
 class Ball {
   constructor(game) {
-    this.image = document.getElementById("img_ball");
-    this.paddle = game.paddle;
-    this.gameWidth = game.gameWidth;
-    this.gameHeight = game.gameHeight;
     this.game = game;
     this.size = 16;
     this.reset();
@@ -21,17 +17,18 @@ class Ball {
   }
 
   reset() {
-    this.position = {
-      x: this.gameWidth / 2 - this.size / 2,
-      y: this.gameHeight - this.size - 10,
-    };
+    this.position = reset({
+      ...this.game,
+      width: this.size,
+      height: this.size,
+    });
     this.speed = { x: 0, y: 0 };
     this.state = 0;
   }
 
   draw(ctx) {
     ctx.drawImage(
-      this.image,
+      document.getElementById("img_ball"),
       this.position.x,
       this.position.y,
       this.size,
@@ -44,11 +41,14 @@ class Ball {
     this.position.y += this.speed.y;
 
     if (this.state === 0) {
-      this.position.x = this.paddle.position.x + 67;
-      this.position.y = this.paddle.position.y - 20;
+      this.position.x = this.game.paddle.position.x + 67;
+      this.position.y = this.game.paddle.position.y - 20;
     } else {
       // wall collision on left or right
-      if (this.position.x > this.gameWidth - this.size || this.position.x < 0) {
+      if (
+        this.position.x > this.game.gameWidth - this.size ||
+        this.position.x < 0
+      ) {
         this.speed.x = -this.speed.x;
       }
       // wall collision on top
@@ -57,10 +57,10 @@ class Ball {
       }
 
       // bottom of game
-      if (this.position.y + this.size > this.gameHeight) {
+      if (this.position.y + this.size > this.game.gameHeight) {
         this.game.lives -= 1;
         this.reset();
-        this.paddle.reset();
+        this.game.paddle.reset();
       }
 
       switch (detectCollisionPaddle(this, this.game.paddle)) {

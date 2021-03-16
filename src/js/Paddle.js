@@ -1,8 +1,9 @@
+import { reset } from "./utils/helpers";
+
 class Paddle {
-  constructor(game) {
-    this.image = document.getElementById("img_paddle");
-    this.gameWidth = game.gameWidth;
-    this.gameHeight = game.gameHeight;
+  constructor({ gameWidth, gameHeight }) {
+    this.gameWidth = gameWidth;
+    this.gameHeight = gameHeight;
     this.width = 150;
     this.height = 20;
 
@@ -11,17 +12,21 @@ class Paddle {
 
     this.reset();
 
-    this.position = {
-      x: game.gameWidth / 2 - this.width / 2,
-      y: game.gameHeight - this.height - 10,
-    };
+    this.position = reset({
+      gameWidth,
+      gameHeight,
+      width: this.width,
+      height: this.height,
+    });
   }
 
   reset() {
-    this.position = {
-      x: this.gameWidth / 2 - this.width / 2,
-      y: this.gameHeight - this.height - 10,
-    };
+    this.position = reset({
+      gameWidth: this.gameWidth,
+      gameHeight: this.gameHeight,
+      width: this.width,
+      height: this.height,
+    });
   }
 
   moveLeft() {
@@ -38,7 +43,7 @@ class Paddle {
 
   draw(ctx) {
     ctx.drawImage(
-      this.image,
+      document.getElementById("img_paddle"),
       this.position.x,
       this.position.y,
       this.width,
@@ -48,7 +53,9 @@ class Paddle {
 
   update() {
     this.position.x += this.speed;
-    if (this.position.x < 0) this.position.x = 0;
+    if (this.position.x < 0) {
+      this.position.x = 0;
+    }
     if (this.position.x + this.width > this.gameWidth)
       this.position.x = this.gameWidth - this.width;
   }
