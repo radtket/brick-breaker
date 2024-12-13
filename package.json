@@ -6,7 +6,11 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "format": "prettier --write src/**/*.{js,json,scss,md}",
-    "build": "npm run clean && parcel build src/index.html --no-source-maps",
+    "prebuild-dev": "shx rm -rf dist/*",
+    "build-dev": "parcel build src/index.html --no-minify --public-url ./",
+    "prebuild": "shx rm -rf dist/*",
+    "build": "parcel build src/index.html --no-minify --public-url ./",
+    "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose",
     "start": "parcel src/index.html --open",
     "watch": "parcel watch src/index.html",
     "lint:es": "eslint --ignore-path .gitignore \"src/**/*.js\"",
@@ -15,20 +19,18 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-minify": "^0.5.0",
+    "babel-eslint": "^10.1.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-minify": "^0.5.0",
-    "eslint": "^7.22.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint": "^7.22.0",
+    "parcel-bundler": "^1.12.3",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.19.1",
-    "stylelint": "^10.1.0",
-    "stylelint-config-idiomatic-order": "^7.0.3",
-    "stylelint-config-prettier": "^5.2.0",
-    "stylelint-config-recommended-scss": "^3.3.0",
-    "stylelint-scss": "^3.9.2"
+    "rimraf": "^2.6.3"
   },
   "browserslist": [
     "> 1%",
@@ -41,14 +43,5 @@
     "Safari >= 9",
     "Android >= 4.4",
     "Opera >= 30"
-  ],
-  "dependencies": {
-    "autoprefixer": "^9.6.1",
-    "babel-eslint": "^10.1.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "node-sass": "^4.12.0",
-    "parcel-bundler": "^1.12.3",
-    "rimraf": "^2.6.3"
-  }
+  ]
 }
